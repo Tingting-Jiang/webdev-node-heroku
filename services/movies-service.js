@@ -22,10 +22,17 @@ module.exports = (app) => {
     
     // create new movie
     const createMovie = (req, res) => {
-        const movie = req.body;
-        movies = [...movies, movie];
-        // res.json(movies);
-        res.sendStatus(200)
+        const newMovie = {
+            _id: (new Date()).getTime() + '',
+            rating: 2.5,
+            ...req.body,
+        }
+        movies = [
+            newMovie,
+            ...movies
+        ];
+        
+        res.json(newMovie);
     }
     app.post('/api/movies', createMovie);
     
