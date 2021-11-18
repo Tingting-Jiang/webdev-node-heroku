@@ -4,6 +4,7 @@ const schema = mongoose.Schema({
     posted: {type: Date, defaultValue: Date.now},
     userName: String,
     verified: {type: Boolean, defaultValue: false},
+    liked: {type: Boolean, defaultValue: false},
     handle: String,
     title: String,
     tweet: String,

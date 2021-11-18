@@ -10,10 +10,10 @@ const schema = mongoose.Schema({
     website: String,
     location:String,
     dateOfBirth: Date,
-    dateJoined: Date,
+    dateJoined: String,
     followingCount: Number,
     followersCount: Number,
-    tweetsNum: Number
+    tweetsNum: String
 }, {collection: 'profile'});
 module.exports = schema;
 

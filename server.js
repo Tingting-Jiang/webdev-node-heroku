@@ -22,9 +22,12 @@ app.use(function(req, res, next) {
 });
 
 
-app.get('/hello', (req, res) => {
-    res.send('Hello World!');
-});
+
+app.get('/', ((req, res) =>
+    console.log("Connected to Server Successfully!")));
+
+app.get('/hello', (req, res) =>
+    res.send('Hello World!'));
 
 // movies from server side
 require('./services/movies-service')(app);
@@ -49,4 +52,4 @@ require("./db/who/who-service")(app);
 // profile form mongodb database
 require("./db/profile/profile-service")(app);
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT || 4000);
