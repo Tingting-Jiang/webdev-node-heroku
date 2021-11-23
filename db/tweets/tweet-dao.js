@@ -1,7 +1,7 @@
 const model = require('./tweet-model');
 
 // const findAllTweets = () => model.find().sort({"_id":-1});
-const findAllTweets = () => model.find();
+const findAllTweets = () => model.find().sort({"$natural": -1});
 
 const createTweet = (tweet) => model.create(tweet);
 

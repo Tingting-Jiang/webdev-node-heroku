@@ -24,7 +24,7 @@ module.exports = (app) =>{
             },
         }
     
-        console.log(newTweet);
+        // console.log(newTweet);
     
         dao.createTweet(newTweet)
             .then((tweet) =>
@@ -39,40 +39,21 @@ module.exports = (app) =>{
     
     
     const likeTweet = (req, res) => {
-    //     const id = req.params.id;
-    //
-    //     dao.findTweetById(id)
-    //         .then(tweet => {
-    //             return res.json(tweet).json();})
-    //         .then(tweetItem=> {
-    //             console.log("new tweetItem ----", tweetItem);
-    //             if (tweetItem.liked === true) {
-    //                 tweetItem.liked = false;
-    //                 tweetItem.stats.likes--;
-    //             } else {
-    //                 tweetItem.liked = true;
-    //                 tweetItem.stats.likes++;
-    //             }
-    //             ;
-    //             dao.updateTweet(id, tweetItem);
-    //         })
-    //             .then(status => res.end(status));
-    // }
-        
-        const tweetItem = dao.findTweetById(req.params._id)
-            .then(tweetItem => res.send(tweetItem));
-        // console.log("returned tweet________", tweetItem);
-        if (tweetItem.liked === true) {
-            tweetItem.liked = false;
-            tweetItem.stats.likes--;
-        } else {
-            tweetItem.liked = true;
-            tweetItem.stats.likes++;
-        };
-
-        dao.updateTweet(req.params.id, tweetItem)
-            .then((status) => res.sendStatus(200));
-    };
+    
+        const id = req.params.id;
+        dao.findTweetById(id)
+            .then(tweet => {
+                if (tweet.liked === true) {
+                    tweet.liked = false;
+                    tweet.stats.likes--;
+                } else {
+                    tweet.liked = true;
+                    tweet.stats.likes++;
+                }
+                dao.updateTweet(id, tweet)
+                    .then(status => res.send(status));
+            });
+    }
     
     app.put('/rest/tweets/:id/like', likeTweet);
     app.delete('/rest/tweets/:id', deleteTweet);
