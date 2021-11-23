@@ -23,8 +23,7 @@ app.use(function(req, res, next) {
 
 
 
-app.get('/', ((req, res) =>
-    console.log("Connected to Server Successfully!")));
+console.log("Connected to Server Successfully!");
 
 app.get('/hello', (req, res) =>
     res.send('Hello World!'));
