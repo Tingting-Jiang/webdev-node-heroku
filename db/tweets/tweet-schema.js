@@ -20,5 +20,6 @@ const schema = mongoose.Schema({
         likes: {type: Number, defaultValue: 0}
     }
 }, {collection: "tweets"});
+
 module.exports = schema;
 

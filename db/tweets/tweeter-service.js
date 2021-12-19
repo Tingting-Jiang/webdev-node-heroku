@@ -39,7 +39,6 @@ module.exports = (app) =>{
     
     
     const likeTweet = (req, res) => {
-    
         const id = req.params.id;
         dao.findTweetById(id)
             .then(tweet => {
