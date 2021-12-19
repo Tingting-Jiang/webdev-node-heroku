@@ -21,5 +21,6 @@ const schema = mongoose.Schema({
     }
 }, {collection: "tweets"});
 
+
 module.exports = schema;
 
